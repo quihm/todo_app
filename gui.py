@@ -7,7 +7,7 @@ sg.theme("BlueMono")
 time_label = sg.Text('', key='clock')
 label = sg.Text("Enter a task")
 input_box = sg.InputText(tooltip="Enter Task", key="task")
-add_button = sg.Button("Add")
+add_button = sg.Button(size=2, image_source='add.png', mouseover_colors="LightBlue2", tooltip="Add task")
 list_box = sg.Listbox(values=functions.get_tasks(), key="tasks",
                       enable_events=True, size=[45, 10])
 edit_button = sg.Button("Edit")
