@@ -1,6 +1,2 @@
-yawn
-brush teeth
-put on pjs
-sleep
-zzzz
-sleep more
+c
+f
