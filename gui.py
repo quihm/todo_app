@@ -1,13 +1,19 @@
 import functions
 import PySimpleGUI as sg
 import time
+import os #standard libary that we will use to make an executable file (specifically to see if files exist)
+
+# Check to see if "tasks.txt" exists; Generates new file if it doesn't already exist.
+if not os.path.exists("tasks.txt"):
+    with open("tasks.txt", 'w') as file:
+        pass
 
 sg.theme("BlueMono")
 
 time_label = sg.Text('', key='clock')
 label = sg.Text("Enter a task")
 input_box = sg.InputText(tooltip="Enter Task", key="task")
-add_button = sg.Button(size=2, image_source='add.png', mouseover_colors="LightBlue2", tooltip="Add task")
+add_button = sg.Button(size=2, image_source='add.png', mouseover_colors="LightBlue2", tooltip="Add task", key="Add")
 list_box = sg.Listbox(values=functions.get_tasks(), key="tasks",
                       enable_events=True, size=[45, 10])
 edit_button = sg.Button("Edit")
@@ -35,6 +41,9 @@ while True:
             tasks = functions.get_tasks()
             new_task = values['task'] + '\n'
             tasks.append(new_task)
+            print("-----------")
+            print(tasks)
+            print("------------")
             functions.write_tasks(tasks)
             window['tasks'].update(values=tasks)
         case "Edit":
